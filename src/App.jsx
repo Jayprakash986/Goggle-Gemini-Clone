@@ -1,11 +1,18 @@
 import React from 'react'
+import Sidebar from './Components/Sidebar'
+import MainContent from './Components/MainContent'
 
 
 function App() {
 
   return (
     <>
-      <div className='text-red-600'>Gemini Clone</div>
+    <div className='flex '>
+      <Sidebar/>
+    <MainContent />
+    
+    </div>
+    
     </>
   )
 }
