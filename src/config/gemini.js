@@ -3,7 +3,6 @@
  *
  * $ npm install @google/generative-ai
  */
-
 import {
     GoogleGenerativeAI,
     HarmCategory,
