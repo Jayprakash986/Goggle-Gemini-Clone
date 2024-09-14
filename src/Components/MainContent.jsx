@@ -1,8 +1,22 @@
-import React from 'react'
+import  {useContext} from 'react'
+import { Context } from '../context/Context';
 import { FaRegUserCircle,FaLightbulb,FaRobot,FaSkull,FaImage,FaMicrophoneAlt } from "react-icons/fa";
 import { FaCompass } from "react-icons/fa6";
 import { IoSendSharp } from "react-icons/io5";
 const MainContent = () => {
+  const{
+    input,
+    setInput,
+    recentPrompt,
+    setrecentPrompt,
+    prevPrompt,
+    setprevPrompt,
+    showResult,
+    loading,
+    resultData,
+    onSent,
+  }=useContext(Context)
+
   return (
     <>
     <div className='flex-1 min-h-screen pb-[15vh] relative '>
@@ -50,12 +64,16 @@ const MainContent = () => {
               type="text" 
               placeholder='Enter a Promp Here'
               className='flex-1 bg-transparent border-none outline-none p-2 text-lg text-black'
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
               />
 
               <div className='flex gap-4 text-black'>
               <FaImage  className='text-2xl cursor-pointer'/>
               <FaMicrophoneAlt className='text-2xl cursor-pointer'/>
-              <IoSendSharp className='text-2xl cursor-pointer'/>
+              <IoSendSharp
+              onClick={() => onSent(input)} 
+              className='text-2xl cursor-pointer'/>
               </div>
           </div>
           <p className='text-sm my-4 mx-auto text-center font-[500] text-slate-600'>Gemini may display inaccurate info,including about people,so double-check its responses</p>
