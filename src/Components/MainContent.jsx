@@ -1,8 +1,9 @@
 import  {useContext} from 'react'
-import { Context } from '../context/Context';
+import { Context } from '../context/Context.jsx';
 import { FaRegUserCircle,FaLightbulb,FaRobot,FaSkull,FaImage,FaMicrophoneAlt } from "react-icons/fa";
 import { FaCompass } from "react-icons/fa6";
 import { IoSendSharp } from "react-icons/io5";
+import geminiLogo from '../assets/geminiLogo.png'
 const MainContent = () => {
   const{
     input,
@@ -19,16 +20,15 @@ const MainContent = () => {
 
   return (
     <>
-    <div className='flex-1 min-h-screen pb-[15vh] relative '>
-      <div className='flex items-center justify-between text-2xl p-5 text-sky-700 '>
+    <div className='flex-1  pb-[15vh] relative bg-red-200 w-screen '>
+      <div className='flex flex-row items-center justify-between text-2xl p-5 text-sky-700 '>
         <p className='flex-grow'>Gemini</p>
-        <div className='absolute right-5'>
         <FaRegUserCircle />
         </div>
-       
-       </div>
 
        <div className='max-w-[900px] mx-auto'>
+        {!showResult ? (
+        <>
         <div className='my-12 text-[56px]  font-semibold p-5'>
           <p>
             <span className='bg-gradient-to-r from-[#c231a0] via-[#eab308] to-[#3676b9] bg-clip-text text-transparent '>Hello,Jayprakash.</span>
@@ -57,13 +57,30 @@ const MainContent = () => {
             <FaRobot className='text-4xl bottom-2 right-2 absolute p-1'/>
           </div>
         </div>
+        </>
+         )   :  (
+         
+         <div className='py-0 px-[5%] max-h-[70vh] overflow-y-scroll'> 
+         <div className='my-10 mx-0 flex items-center justify-between gap-5 '>
+         <FaRegUserCircle  className='text-3xl'/>
+
+         <p className='text-black'>{recentPrompt}</p>
+         </div>
+         
+          <div className='flex items-start gap-5'>
+              <img src={geminiLogo} alt="" className='rounded-[50%] w-8'/>
+
+              <p className='text-black'>{resultData}</p>
+          </div>
+         </div>)}
+       
 
         <div className='absolute bottom-0 w-full max-w-[900px] px-5 mx-auto mt-5'>
           <div className='flex items-center justify-between gap-20 bg-gray-200 py-2 px-5 rounded-full'>
               <input  
               type="text" 
               placeholder='Enter a Promp Here'
-              className='flex-1 bg-transparent border-none outline-none p-2 text-lg text-black'
+              className='flex-1 bg-transparent border-none outline-none p-2 text-lg text-black '
               value={input}
               onChange={(e) => setInput(e.target.value)}
               />

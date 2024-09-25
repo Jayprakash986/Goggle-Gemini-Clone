@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide scrollbars for Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbars for Firefox */
+html {
+  scrollbar-width: none; /* Disables scrollbar */
+}
+
+/* Hide scrollbars for older versions of IE and Edge */
+html {
+  -ms-overflow-style: none; /* Disables scrollbar */
+}
+
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
