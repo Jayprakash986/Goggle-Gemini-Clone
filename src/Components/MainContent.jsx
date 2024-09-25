@@ -61,16 +61,28 @@ const MainContent = () => {
          )   :  (
          
          <div className='py-0 px-[5%] max-h-[70vh] overflow-y-scroll'> 
-         <div className='my-10 mx-0 flex items-center justify-between gap-5 '>
+         <div className='my-10 mx-0 flex items-center gap-5 text-black'>
          <FaRegUserCircle  className='text-3xl'/>
 
-         <p className='text-black'>{recentPrompt}</p>
+         <p>{recentPrompt}</p>
          </div>
          
           <div className='flex items-start gap-5'>
               <img src={geminiLogo} alt="" className='rounded-[50%] w-8'/>
 
-              <p className='text-black'>{resultData}</p>
+                {loading ?
+                (
+                  <div className='flex flex-col gap-2 w-full'>
+                    <hr className='rounded-md border-none bg-gray-200 bg-gradient-to-r from-[#7171e2] via-[#d5cece] to-[#7171e2] p-4 animate-scroll-bg'/>
+                    <hr className='rounded-md border-none bg-gray-200 bg-gradient-to-r from-[#7171e2] via-[#d5cece] to-[#7171e2] p-4 animate-scroll-bg'/>
+                    <hr className='rounded-md border-none bg-gray-200 bg-gradient-to-r from-[#7171e2] via-[#d5cece] to-[#7171e2] p-4 animate-scroll-bg'/>
+                    <hr className='rounded-md border-none bg-gray-200 bg-gradient-to-r from-[#7171e2] via-[#d5cece] to-[#7171e2] p-4 animate-scroll-bg'/>
+                  </div>
+                )
+                :
+                (<p dangerouslySetInnerHTML={{__html:resultData}} className='text-black text-lg font-[400] leading-[1.8]'></p>)
+                }
+              
           </div>
          </div>)}
        
@@ -89,7 +101,7 @@ const MainContent = () => {
               <FaImage  className='text-2xl cursor-pointer'/>
               <FaMicrophoneAlt className='text-2xl cursor-pointer'/>
               <IoSendSharp
-              onClick={() => onSent(input)} 
+              onClick={() => onSent()} 
               className='text-2xl cursor-pointer'/>
               </div>
           </div>
